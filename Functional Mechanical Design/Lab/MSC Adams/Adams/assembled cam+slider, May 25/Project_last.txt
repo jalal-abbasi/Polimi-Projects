@@ -1,0 +1,2980 @@
+!
+!-------------------------- Default Units for Model ---------------------------!
+!
+!
+defaults units  &
+   length = mm  &
+   angle = deg  &
+   force = newton  &
+   mass = kg  &
+   time = sec
+!
+defaults units  &
+   coordinate_system_type = cartesian  &
+   orientation_type = body313
+!
+!------------------------ Default Attributes for Model ------------------------!
+!
+!
+defaults attributes  &
+   inheritance = bottom_up  &
+   icon_visibility = on  &
+   grid_visibility = off  &
+   size_of_icons = 50.0  &
+   spacing_for_grid = 1000.0
+!
+!--------------------------- Plugins used by Model ----------------------------!
+!
+!
+plugin load  &
+   plugin_name = .MDI.plugins.amachinery
+!
+!------------------------------ Adams View Model ------------------------------!
+!
+!
+model create  &
+   model_name = Project_last
+!
+view erase
+!
+!-------------------------------- Data storage --------------------------------!
+!
+!
+!--------------------------------- Materials ----------------------------------!
+!
+!
+material create  &
+   material_name = .Project_last.steel  &
+   adams_id = 1  &
+   density = 7.801E-06  &
+   youngs_modulus = 2.07E+05  &
+   poissons_ratio = 0.29
+!
+!-------------------------------- Rigid Parts ---------------------------------!
+!
+! Create parts and their dependent markers and graphics
+!
+!----------------------------------- ground -----------------------------------!
+!
+!
+! ****** Ground Part ******
+!
+defaults model  &
+   part_name = ground
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Project_last.ground.Cam_profile_2_ref_marker  &
+   adams_id = 62  &
+   location = 600.0, 150.0, 0.0  &
+   orientation = 90.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.ground.mar_follower_1_1_cont  &
+   adams_id = 63  &
+   location = 500.0, 150.0, 0.0  &
+   orientation = 90.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.ground.follower_1_1_spring_attach_j  &
+   adams_id = 64  &
+   location = 325.0, 150.0, 0.0  &
+   orientation = 90.0d, 0.0d, 0.0d
+!
+marker attributes  &
+   marker_name = .Project_last.ground.follower_1_1_spring_attach_j  &
+   name_visibility = off
+!
+marker create  &
+   marker_name = .Project_last.ground.follower_1_1_fol_attach_j  &
+   adams_id = 65  &
+   location = 400.0, 150.0, 0.0  &
+   orientation = 270.0d, 90.0d, 180.0d
+!
+marker attributes  &
+   marker_name = .Project_last.ground.follower_1_1_fol_attach_j  &
+   name_visibility = off
+!
+marker create  &
+   marker_name = .Project_last.ground.follower_1_1_cam_attach_j  &
+   adams_id = 66  &
+   location = 600.0, 150.0, 0.0  &
+   orientation = 90.0d, 0.0d, 0.0d
+!
+marker attributes  &
+   marker_name = .Project_last.ground.follower_1_1_cam_attach_j  &
+   visibility = off  &
+   name_visibility = off
+!
+marker create  &
+   marker_name = .Project_last.ground.MARKER_98  &
+   adams_id = 98  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.ground.MARKER_86  &
+   adams_id = 86  &
+   location = 600.0, 150.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.ground.MARKER_94  &
+   adams_id = 94  &
+   location = 325.0, 150.0, 0.0  &
+   orientation = 270.0d, 90.0d, 180.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Project_last.ground  &
+   material_type = .Project_last.steel
+!
+part attributes  &
+   part_name = .Project_last.ground  &
+   name_visibility = off
+!
+!----------------------------------- crank ------------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Project_last.crank  &
+   adams_id = 2  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.crank
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Project_last.crank.MARKER_1  &
+   adams_id = 1  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 55.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.crank.MARKER_2  &
+   adams_id = 2  &
+   location = 58.2409513471, 83.1766985771, 0.0  &
+   orientation = 63.4349488229d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.crank.cm  &
+   adams_id = 29  &
+   location = 29.1204756735, 41.5883492886, 0.0  &
+   orientation = 145.0d, 89.9999999828d, 89.9999999297d
+!
+marker create  &
+   marker_name = .Project_last.crank.MARKER_104  &
+   adams_id = 104  &
+   location = 58.2409513471, 83.1766985771, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.crank.MARKER_97  &
+   adams_id = 97  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.crank.MARKER_18  &
+   adams_id = 18  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Project_last.crank  &
+   material_type = .Project_last.steel
+!
+! ****** Graphics for current part ******
+!
+geometry create shape link  &
+   link_name = .Project_last.crank.LINK_1  &
+   i_marker = .Project_last.crank.MARKER_1  &
+   j_marker = .Project_last.crank.MARKER_2  &
+   width = 40.0  &
+   depth = 20.0
+!
+part attributes  &
+   part_name = .Project_last.crank  &
+   color = GREEN  &
+   name_visibility = off
+!
+!---------------------------------- coupler -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Project_last.coupler  &
+   adams_id = 3  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.coupler
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Project_last.coupler.MARKER_3  &
+   adams_id = 3  &
+   location = 58.2409513471, 83.1766985771, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.coupler.MARKER_4  &
+   adams_id = 4  &
+   location = 251.2409513471, 83.1766985771, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.coupler.cm  &
+   adams_id = 30  &
+   location = 154.7409513471, 83.1766985771, 0.0  &
+   orientation = 270.0d, 90.0d, 90.0d
+!
+marker create  &
+   marker_name = .Project_last.coupler.MARKER_105  &
+   adams_id = 105  &
+   location = 58.2409513471, 83.1766985771, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.coupler.MARKER_107  &
+   adams_id = 107  &
+   location = 251.2409513471, 83.1766985771, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Project_last.coupler  &
+   material_type = .Project_last.steel
+!
+! ****** Graphics for current part ******
+!
+geometry create shape link  &
+   link_name = .Project_last.coupler.LINK_2  &
+   i_marker = .Project_last.coupler.MARKER_3  &
+   j_marker = .Project_last.coupler.MARKER_4  &
+   width = 40.0  &
+   depth = 20.0
+!
+part attributes  &
+   part_name = .Project_last.coupler  &
+   color = MAIZE  &
+   name_visibility = off
+!
+!----------------------------------- PART_5 -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Project_last.PART_5  &
+   adams_id = 5  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.PART_5
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Project_last.PART_5.MARKER_16  &
+   adams_id = 16  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.PART_5.cm  &
+   adams_id = 48  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Project_last.PART_5.MARKER_17  &
+   adams_id = 17  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Project_last.PART_5  &
+   mass = 2.0913121528E-03  &
+   center_of_mass_marker = .Project_last.PART_5.cm  &
+   ixx = 1.1E+06  &
+   iyy = 1.1E+06  &
+   izz = 1.1E+06  &
+   ixy = 0.0  &
+   izx = 0.0  &
+   iyz = 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape ellipsoid  &
+   ellipsoid_name = .Project_last.PART_5.ELLIPSOID_17  &
+   adams_id = 8  &
+   center_marker = .Project_last.PART_5.MARKER_16  &
+   x_scale_factor = 8.0  &
+   y_scale_factor = 8.0  &
+   z_scale_factor = 8.0
+!
+part attributes  &
+   part_name = .Project_last.PART_5  &
+   color = MAGENTA  &
+   name_visibility = off
+!
+!----------------------------------- Joints -----------------------------------!
+!
+!
+constraint create joint revolute  &
+   joint_name = .Project_last.JOINT_21  &
+   adams_id = 21  &
+   i_marker_name = .Project_last.crank.MARKER_104  &
+   j_marker_name = .Project_last.coupler.MARKER_105
+!
+constraint attributes  &
+   constraint_name = .Project_last.JOINT_21  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Project_last.JOINT_20  &
+   adams_id = 20  &
+   i_marker_name = .Project_last.crank.MARKER_97  &
+   j_marker_name = .Project_last.ground.MARKER_98
+!
+constraint attributes  &
+   constraint_name = .Project_last.JOINT_20  &
+   name_visibility = off
+!
+constraint create joint fixed  &
+   joint_name = .Project_last.JOINT_4  &
+   adams_id = 4  &
+   i_marker_name = .Project_last.PART_5.MARKER_17  &
+   j_marker_name = .Project_last.crank.MARKER_18
+!
+constraint attributes  &
+   constraint_name = .Project_last.JOINT_4  &
+   name_visibility = off
+!
+!----------------------------------- Forces -----------------------------------!
+!
+!
+!----------------------------- Simulation Scripts -----------------------------!
+!
+!
+simulation script create  &
+   sim_script_name = .Project_last.Last_Sim  &
+   commands =   &
+              "simulation single_run transient type=auto_select initial_static=no end_time=5.0 number_of_steps=500 model_name=.Project_last"
+!
+!-------------------------- Adams View UDE Instances --------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+undo begin_block suppress = yes
+!
+ude create instance  &
+   instance_name = .Project_last.Follower_Motion_1  &
+   definition_name = .amachinery.parts.Follower_Motion  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0, 0.0, 0.0
+!
+ude create instance  &
+   instance_name = .Project_last.follower_1_1  &
+   definition_name = .amachinery.parts.follower  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0, 0.0, 0.0
+!
+ude create instance  &
+   instance_name = .Project_last.cam_sys_1  &
+   definition_name = .amachinery.parts.cam_sys  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0, 0.0, 0.0
+!
+ude create instance  &
+   instance_name = .Project_last.Cam_profile_2  &
+   definition_name = .amachinery.parts.cam_profile  &
+   location = 600.0, 150.0, 0.0  &
+   orientation = 90.0, 0.0, 0.0
+!
+!-------------------------- Adams View UDE Instance ---------------------------!
+!
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.follower_motion_name  &
+   string_value = ".Project_last.Follower_Motion_1"
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.motion_type  &
+   string_value = "angle"
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.methods  &
+   string_value = "import"
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.follower_displacement  &
+   string_value = "translation"
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_num  &
+   integer_value = 6
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_1_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      0.0,  &
+      1.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_2_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      1.0,  &
+      2.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_3_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      2.0,  &
+      3.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_4_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      3.0,  &
+      4.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_5_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      4.0,  &
+      5.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_6_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_7_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_8_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_9_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_10_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_11_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_12_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_13_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_14_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_15_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_16_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_17_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_18_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_19_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_20_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_21_values  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      1.0,  &
+      1.0,  &
+      2.0,  &
+      5.0,  &
+      6.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.function_type  &
+   string_value =   &
+      "step",  &
+      "shf",  &
+      "poly",  &
+      "const",  &
+      "const",  &
+      "const"
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.import_spl_file  &
+   string_value = "C:/Users/marta/Desktop/magistrale/secondo anno/functional/progetto/ADAMS_project/paola_1.csv"
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.one_cycle_duration  &
+   real_value = 1.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.func_spl_x  &
+   real_value =   &
+      0.0,  &
+      3.636363636,  &
+      7.272727273,  &
+      10.90909091,  &
+      14.54545455,  &
+      18.18181818,  &
+      21.81818182,  &
+      25.45454545,  &
+      29.09090909,  &
+      32.72727273,  &
+      36.36363636,  &
+      40.0,  &
+      43.63636364,  &
+      47.27272727,  &
+      50.90909091,  &
+      54.54545455,  &
+      58.18181818,  &
+      61.81818182,  &
+      65.45454545,  &
+      69.09090909,  &
+      72.72727273,  &
+      76.36363636,  &
+      80.0,  &
+      83.63636364,  &
+      87.27272727,  &
+      90.90909091,  &
+      94.54545455,  &
+      98.18181818,  &
+      101.8181818,  &
+      105.4545455,  &
+      109.0909091,  &
+      112.7272727,  &
+      116.3636364,  &
+      120.0,  &
+      123.6363636,  &
+      127.2727273,  &
+      130.9090909,  &
+      134.5454545,  &
+      138.1818182,  &
+      141.8181818,  &
+      145.4545455,  &
+      149.0909091,  &
+      152.7272727,  &
+      156.3636364,  &
+      160.0,  &
+      163.6363636,  &
+      167.2727273,  &
+      170.9090909,  &
+      174.5454545,  &
+      178.1818182,  &
+      181.8181818,  &
+      185.4545455,  &
+      189.0909091,  &
+      192.7272727,  &
+      196.3636364,  &
+      200.0,  &
+      203.6363636,  &
+      207.2727273,  &
+      210.9090909,  &
+      214.5454545,  &
+      218.1818182,  &
+      221.8181818,  &
+      225.4545455,  &
+      229.0909091,  &
+      232.7272727,  &
+      236.3636364,  &
+      240.0,  &
+      243.6363636,  &
+      247.2727273,  &
+      250.9090909,  &
+      254.5454545,  &
+      258.1818182,  &
+      261.8181818,  &
+      265.4545455,  &
+      269.0909091,  &
+      272.7272727,  &
+      276.3636364,  &
+      280.0,  &
+      283.6363636,  &
+      287.2727273,  &
+      290.9090909,  &
+      294.5454545,  &
+      298.1818182,  &
+      301.8181818,  &
+      305.4545455,  &
+      309.0909091,  &
+      312.7272727,  &
+      316.3636364,  &
+      320.0,  &
+      323.6363636,  &
+      327.2727273,  &
+      330.9090909,  &
+      334.5454545,  &
+      338.1818182,  &
+      341.8181818,  &
+      345.4545455,  &
+      349.0909091,  &
+      352.7272727,  &
+      356.3636364,  &
+      360.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.jerk_x  &
+   real_value =   &
+      0.0,  &
+      3.636363636,  &
+      7.272727273,  &
+      10.90909091,  &
+      14.54545455,  &
+      18.18181818,  &
+      21.81818182,  &
+      25.45454545,  &
+      29.09090909,  &
+      32.72727273,  &
+      36.36363636,  &
+      40.0,  &
+      43.63636364,  &
+      47.27272727,  &
+      50.90909091,  &
+      54.54545455,  &
+      58.18181818,  &
+      61.81818182,  &
+      65.45454545,  &
+      69.09090909,  &
+      72.72727273,  &
+      76.36363636,  &
+      80.0,  &
+      83.63636364,  &
+      87.27272727,  &
+      90.90909091,  &
+      94.54545455,  &
+      98.18181818,  &
+      101.8181818,  &
+      105.4545455,  &
+      109.0909091,  &
+      112.7272727,  &
+      116.3636364,  &
+      120.0,  &
+      123.6363636,  &
+      127.2727273,  &
+      130.9090909,  &
+      134.5454545,  &
+      138.1818182,  &
+      141.8181818,  &
+      145.4545455,  &
+      149.0909091,  &
+      152.7272727,  &
+      156.3636364,  &
+      160.0,  &
+      163.6363636,  &
+      167.2727273,  &
+      170.9090909,  &
+      174.5454545,  &
+      178.1818182,  &
+      181.8181818,  &
+      185.4545455,  &
+      189.0909091,  &
+      192.7272727,  &
+      196.3636364,  &
+      200.0,  &
+      203.6363636,  &
+      207.2727273,  &
+      210.9090909,  &
+      214.5454545,  &
+      218.1818182,  &
+      221.8181818,  &
+      225.4545455,  &
+      229.0909091,  &
+      232.7272727,  &
+      236.3636364,  &
+      240.0,  &
+      243.6363636,  &
+      247.2727273,  &
+      250.9090909,  &
+      254.5454545,  &
+      258.1818182,  &
+      261.8181818,  &
+      265.4545455,  &
+      269.0909091,  &
+      272.7272727,  &
+      276.3636364,  &
+      280.0,  &
+      283.6363636,  &
+      287.2727273,  &
+      290.9090909,  &
+      294.5454545,  &
+      298.1818182,  &
+      301.8181818,  &
+      305.4545455,  &
+      309.0909091,  &
+      312.7272727,  &
+      316.3636364,  &
+      320.0,  &
+      323.6363636,  &
+      327.2727273,  &
+      330.9090909,  &
+      334.5454545,  &
+      338.1818182,  &
+      341.8181818,  &
+      345.4545455,  &
+      349.0909091,  &
+      352.7272727,  &
+      356.3636364,  &
+      360.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.jerk_y  &
+   real_value =   &
+      -2.4124765519E+04,  &
+      1.6777883454E+05,  &
+      4.5541130036E+05,  &
+      4.7319920503E+05,  &
+      1.4776657768E+05,  &
+      4762.5070308316,  &
+      6.2360471216E+04,  &
+      8.828828981E+04,  &
+      -1.8404320061E+05,  &
+      -5.254831514E+05,  &
+      -6.0418345814E+05,  &
+      -6.5579736033E+05,  &
+      -5.4791809841E+05,  &
+      -1.6150220505E+05,  &
+      4.292727539E+04,  &
+      -9140.3544625411,  &
+      -2844.6405039985,  &
+      2.9401987213E+05,  &
+      6.0484613065E+05,  &
+      3.9652531091E+05,  &
+      3.0104818934E+04,  &
+      -2.4946639744E+04,  &
+      7202.9726560848,  &
+      -995.9807793743,  &
+      -270.9131529244,  &
+      293.7275183105,  &
+      -158.5995210907,  &
+      69.4355769202,  &
+      -27.3055164058,  &
+      10.0448425883,  &
+      -3.5289725836,  &
+      1.1984946617,  &
+      -0.3965420855,  &
+      0.1285052182,  &
+      -4.0943759116E-02,  &
+      1.2862408735E-02,  &
+      -3.9931459203E-03,  &
+      1.2301134105E-03,  &
+      -3.916740211E-04,  &
+      1.9818397583E-04,  &
+      -4.07522216E-04,  &
+      1.5697546673E-03,  &
+      -6.2864523274E-03,  &
+      2.460448939E-02,  &
+      -9.3986114013E-02,  &
+      0.3508467797,  &
+      -1.2798852048,  &
+      4.5552533346,  &
+      -15.759085422,  &
+      52.631053044,  &
+      -167.5635882343,  &
+      496.0687393087,  &
+      -1288.2843806889,  &
+      2405.8722910615,  &
+      1107.9146224667,  &
+      -4.5966816276E+04,  &
+      -9.0340011677E+04,  &
+      -9.46429661E+04,  &
+      -9.2869051872E+04,  &
+      -5.4372364407E+04,  &
+      -4363.9785351974,  &
+      1179.7816931951,  &
+      -3061.7900731337,  &
+      -1401.0350197512,  &
+      357.8302155005,  &
+      1270.2704447487,  &
+      -1159.7813474109,  &
+      3.1165681554E+04,  &
+      8.8120232241E+04,  &
+      1.0694372468E+05,  &
+      1.0001541274E+05,  &
+      9.8479815137E+04,  &
+      9.4436907846E+04,  &
+      8.8413247589E+04,  &
+      8.8382890963E+04,  &
+      6.6455569542E+04,  &
+      1.272041698E+04,  &
+      -1.5250624662E+04,  &
+      -1.0011326087E+04,  &
+      -8438.9719508188,  &
+      -8077.2108708009,  &
+      -7794.8828734536,  &
+      -2734.2244271767,  &
+      -6092.818871765,  &
+      -4.9334521938E+04,  &
+      -8.3011350338E+04,  &
+      -8.3671844026E+04,  &
+      -7.9524410396E+04,  &
+      -4.0698955096E+04,  &
+      950.2292887774,  &
+      2156.24307346,  &
+      -1154.9991562841,  &
+      445.7290039936,  &
+      -151.0042029268,  &
+      47.5987304508,  &
+      -14.3134807237,  &
+      4.1636098101,  &
+      -1.1986612546,  &
+      0.4123282421,  &
+      -0.4069103223
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.accl_x  &
+   real_value =   &
+      0.0,  &
+      3.636363636,  &
+      7.272727273,  &
+      10.90909091,  &
+      14.54545455,  &
+      18.18181818,  &
+      21.81818182,  &
+      25.45454545,  &
+      29.09090909,  &
+      32.72727273,  &
+      36.36363636,  &
+      40.0,  &
+      43.63636364,  &
+      47.27272727,  &
+      50.90909091,  &
+      54.54545455,  &
+      58.18181818,  &
+      61.81818182,  &
+      65.45454545,  &
+      69.09090909,  &
+      72.72727273,  &
+      76.36363636,  &
+      80.0,  &
+      83.63636364,  &
+      87.27272727,  &
+      90.90909091,  &
+      94.54545455,  &
+      98.18181818,  &
+      101.8181818,  &
+      105.4545455,  &
+      109.0909091,  &
+      112.7272727,  &
+      116.3636364,  &
+      120.0,  &
+      123.6363636,  &
+      127.2727273,  &
+      130.9090909,  &
+      134.5454545,  &
+      138.1818182,  &
+      141.8181818,  &
+      145.4545455,  &
+      149.0909091,  &
+      152.7272727,  &
+      156.3636364,  &
+      160.0,  &
+      163.6363636,  &
+      167.2727273,  &
+      170.9090909,  &
+      174.5454545,  &
+      178.1818182,  &
+      181.8181818,  &
+      185.4545455,  &
+      189.0909091,  &
+      192.7272727,  &
+      196.3636364,  &
+      200.0,  &
+      203.6363636,  &
+      207.2727273,  &
+      210.9090909,  &
+      214.5454545,  &
+      218.1818182,  &
+      221.8181818,  &
+      225.4545455,  &
+      229.0909091,  &
+      232.7272727,  &
+      236.3636364,  &
+      240.0,  &
+      243.6363636,  &
+      247.2727273,  &
+      250.9090909,  &
+      254.5454545,  &
+      258.1818182,  &
+      261.8181818,  &
+      265.4545455,  &
+      269.0909091,  &
+      272.7272727,  &
+      276.3636364,  &
+      280.0,  &
+      283.6363636,  &
+      287.2727273,  &
+      290.9090909,  &
+      294.5454545,  &
+      298.1818182,  &
+      301.8181818,  &
+      305.4545455,  &
+      309.0909091,  &
+      312.7272727,  &
+      316.3636364,  &
+      320.0,  &
+      323.6363636,  &
+      327.2727273,  &
+      330.9090909,  &
+      334.5454545,  &
+      338.1818182,  &
+      341.8181818,  &
+      345.4545455,  &
+      349.0909091,  &
+      352.7272727,  &
+      356.3636364,  &
+      360.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.accl_y  &
+   real_value =   &
+      -628.0992054582,  &
+      97.426395826,  &
+      3083.6916129981,  &
+      8389.0871414252,  &
+      1.1487646832E+04,  &
+      1.1988508094E+04,  &
+      1.2259286822E+04,  &
+      1.3141682106E+04,  &
+      1.3038648536E+04,  &
+      9190.9492265707,  &
+      3307.4725680423,  &
+      -2923.5771811542,  &
+      -9403.9449468594,  &
+      -1.3054795896E+04,  &
+      -1.3279364617E+04,  &
+      -1.3051204844E+04,  &
+      -1.3267508667E+04,  &
+      -1.2130326205E+04,  &
+      -7280.7040283644,  &
+      -1659.1824211557,  &
+      197.5861927926,  &
+      -2.6236750558,  &
+      -12.7800271192,  &
+      7.0371672954,  &
+      -2.8536419233,  &
+      1.0240162156,  &
+      -0.3438863644,  &
+      0.1107670918,  &
+      -3.4669974696E-02,  &
+      1.062686419E-02,  &
+      -3.2057272515E-03,  &
+      9.5496949401E-04,  &
+      -2.8160576471E-04,  &
+      8.2348389794E-05,  &
+      -2.3912113209E-05,  &
+      6.9025538147E-06,  &
+      -1.9837291176E-06,  &
+      5.7238175209E-07,  &
+      -1.8024822045E-07,  &
+      1.063928991E-07,  &
+      -2.0200019618E-07,  &
+      5.7053341358E-07,  &
+      -1.5991586279E-06,  &
+      4.0332765406E-06,  &
+      -7.8436240048E-06,  &
+      2.3727490085E-06,  &
+      9.1536182419E-05,  &
+      -7.162832591E-04,  &
+      4.0714762103E-03,  &
+      -2.0413373795E-02,  &
+      9.5659147834E-02,  &
+      -0.4296879773,  &
+      1.8748747463,  &
+      -8.0094737222,  &
+      33.669889971,  &
+      -139.7579065756,  &
+      -885.856572578,  &
+      -1829.8920210582,  &
+      -2777.3748556616,  &
+      -3582.3887619911,  &
+      -3837.0465337046,  &
+      -3820.2624907232,  &
+      -3846.1598059771,  &
+      -3862.2436816653,  &
+      -3874.1332061594,  &
+      -3857.8647040994,  &
+      -3859.7253586359,  &
+      -3764.2726941094,  &
+      -3147.1894027103,  &
+      -2112.4533798274,  &
+      -1073.4165506296,  &
+      -73.7826967475,  &
+      907.632551556,  &
+      1827.364428449,  &
+      2713.9382457255,  &
+      3539.1502045302,  &
+      3949.3779316862,  &
+      3882.8761778543,  &
+      3753.1038355124,  &
+      3668.2805513517,  &
+      3578.5434820754,  &
+      3504.8371243379,  &
+      3437.1597549748,  &
+      3421.2526139878,  &
+      3179.7859421499,  &
+      2456.8005691909,  &
+      1613.9550936416,  &
+      782.6485870418,  &
+      124.1623553449,  &
+      -30.0450123773,  &
+      7.186617841,  &
+      -1.694162109,  &
+      0.391922775,  &
+      -8.8395453603E-02,  &
+      1.9232289321E-02,  &
+      -3.9603084334E-03,  &
+      7.4211034385E-04,  &
+      -1.1419129459E-04,  &
+      5.7228748133E-06,  &
+      3.3086195358E-05
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.toggle_states  &
+   string_value = ""
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.dv_optimization  &
+   string_value = ""
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.acc_jerk_name  &
+   string_value = "Acceleration"
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.follower_obj_value  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.Follower_Motion_1.func_spl_y  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      2.3232196E-02,  &
+      0.374094267,  &
+      1.568509819,  &
+      3.918615707,  &
+      7.480024254,  &
+      12.30730706,  &
+      18.45037599,  &
+      25.91216932,  &
+      34.28330959,  &
+      42.99087391,  &
+      51.40078545,  &
+      58.87627606,  &
+      65.03709853,  &
+      69.85937138,  &
+      73.33894435,  &
+      75.4860768,  &
+      76.41652198,  &
+      76.60709731,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.59304953,  &
+      76.48295901,  &
+      76.18598919,  &
+      75.60847805,  &
+      74.66777356,  &
+      73.33903144,  &
+      71.62010421,  &
+      69.50880295,  &
+      67.00341015,  &
+      64.10321528,  &
+      60.80863272,  &
+      57.12251689,  &
+      53.0553581,  &
+      48.67051111,  &
+      44.07095798,  &
+      39.36114311,  &
+      34.64384845,  &
+      30.01845142,  &
+      25.57958808,  &
+      21.41639282,  &
+      17.61090771,  &
+      14.20559207,  &
+      11.19458667,  &
+      8.567409267,  &
+      6.314311123,  &
+      4.426465376,  &
+      2.896346542,  &
+      1.717373369,  &
+      0.884541465,  &
+      0.374125563,  &
+      0.111971486,  &
+      1.4634969E-02,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0
+!
+ude modify instance  &
+   instance_name = .Project_last.Follower_Motion_1
+!
+!-------------------------- Adams View UDE Instance ---------------------------!
+!
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.cam_pro_loc  &
+   real_value = ({0, 0, 0})
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_arm_len  &
+   real_value = 150.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_arm_rad  &
+   real_value = 15.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_cir_end_thi  &
+   real_value = (.Project_last.Cam_profile_2.cam_thickness.real_value)
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_end_ht  &
+   real_value = 25.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_flat_end_wid  &
+   real_value = 50.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_flat_thi  &
+   real_value = (80.0mm)
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.cam_pro_sha  &
+   string_value = "disk"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.Fol_end_sha  &
+   string_value = "circle"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_mnt_style  &
+   string_value = "none"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_cam_conn  &
+   string_value = "constraint"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_loading  &
+   string_value = "spring"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_arrangement  &
+   string_value = "inline"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_mnt_part  &
+   object_value = .Project_last.ground
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_joint_type  &
+   string_value = "translational"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_motion_type  &
+   string_value = "translation"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_piv_x_offset  &
+   real_value = 400.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_piv_y_offset  &
+   real_value = 50.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_piv_z_offset  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_axis_offset  &
+   real_value = (0.0mm)
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_offset_along_cam_axis  &
+   real_value = (0.0mm)
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.exte_file  &
+   string_value = ""
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.exte_file_coordinates  &
+   string_value = "cartesian"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.angular_offset  &
+   real_value = 45.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.radial_offset  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.axial_offset  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_ref_mar  &
+   object_value = .Project_last.ground.mar_follower_1_1_cont
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_inertia_chk  &
+   string_value = "off"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_mass_option  &
+   string_value = "mass"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_mass  &
+   real_value = 2.3
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_Ixx  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_Iyy  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_Izz  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_Ixy  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_Izx  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_Iyz  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_density  &
+   real_value = 7.8E-06
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.arm_material  &
+   string_value = ".materials.steel"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_inertia_chk  &
+   string_value = "off"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_mass_option  &
+   string_value = "mass"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_mass  &
+   real_value = 1.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_Ixx  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_Iyy  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_Izz  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_Ixy  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_Izx  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_Iyz  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_density  &
+   real_value = 7.8E-06
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.end_material  &
+   string_value = ".materials.steel"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_i_geo  &
+   object_value = .Project_last.follower_1_1.par_fol_end.geo_cyl
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_j_geo  &
+   object_value = .Project_last.Cam_profile_2.par_cam.geo_shell
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_stiff  &
+   real_value = 1.0E+05
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_damp  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_expo  &
+   real_value = 2.2
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_dmax  &
+   real_value = 0.1
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_fri  &
+   string_value = "on"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_fric_force  &
+   string_value = "coloumb"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_fri_mu_sta  &
+   real_value = 0.3
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_fri_mu_dyn  &
+   real_value = 0.1
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_fri_sti_tra_vel  &
+   real_value = 100.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.con_fri_fri_tra_vel  &
+   real_value = 1000.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.joi_cur_j  &
+   object_value = .Project_last.Cam_profile_2.cur_cam_pro
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.joi_cur_i  &
+   object_value = .Project_last.follower_1_1.curve_foll_i
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.joi_mar_cur_j  &
+   object_value = .Project_last.Cam_profile_2.par_cam.mar_pro_ref
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.spr_i_mar  &
+   object_value = (.Project_last.follower_1_1.par_fol_arm.mar_fol_arm_spr_i)
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.spr_j_mar  &
+   object_value = .Project_last.ground.follower_1_1_spring_attach_j
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.spr_stiffness  &
+   real_value = 100.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.spr_free_len  &
+   real_value = 300.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.spr_damping  &
+   real_value = 1.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.spr_preload  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_arm_mnt_i_mar  &
+   object_value = .Project_last.follower_1_1.par_fol_arm.mar_fol_arm_mnt_i
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_arm_mnt_j_mar  &
+   object_value = .Project_last.ground.follower_1_1_fol_attach_j
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_bush_kx  &
+   real_value = 1.0E+05
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_bush_kz  &
+   real_value = 1.0E+05
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_bush_ktx  &
+   real_value = 1.0E+05
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_bush_ktz  &
+   real_value = 1.0E+05
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_bush_Damp  &
+   real_value = (1.0E-03 / UNITS_CONVERSION_FACTOR("sec"))
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_bush_stiff  &
+   real_value =   &
+      (.Project_last.follower_1_1.fol_bush_kx),  &
+      (.Project_last.follower_1_1.fol_bush_kx),  &
+      (.Project_last.follower_1_1.fol_bush_kz)
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_bush_tstiff  &
+   real_value =   &
+      (.Project_last.follower_1_1.fol_bush_ktx),  &
+      (.Project_last.follower_1_1.fol_bush_ktx),  &
+      (.Project_last.follower_1_1.fol_bush_ktz)
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.cam_sys_name  &
+   string_value = ".Project_last.cam_sys_1"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.num_of_foll  &
+   string_value = "one"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.cam_profile_name  &
+   object_value = .Project_last.Cam_profile_2
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.cam_profile_name_tmp  &
+   string_value = ".Project_last.Cam_profile_2"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.cam_profile_type  &
+   string_value = "create"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_mnt_part_type  &
+   string_value = "rigid"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_2nd_piv_loc  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_2nd_piv_loc_flag  &
+   string_value = "off"
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_ref_mar_y_dis  &
+   real_value = (0.0mm)
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.fol_tilt_angle  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.cam_disk_min_rad  &
+   real_value = 100.0
+!
+variable modify  &
+   variable_name = .Project_last.follower_1_1.damp_roller_fol  &
+   real_value = 20.0
+!
+ude modify instance  &
+   instance_name = .Project_last.follower_1_1
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+marker create  &
+   marker_name = .Project_last.follower_1_1.par_fol_arm.MARKER_93  &
+   adams_id = 93  &
+   location = 325.0, 150.0, 0.0  &
+   orientation = 270.0d, 90.0d, 180.0d
+!
+marker create  &
+   marker_name = .Project_last.follower_1_1.par_fol_arm.MARKER_106  &
+   adams_id = 106  &
+   location = 251.2409513471, 83.1766985771, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+!-------------------------- Adams View UDE Instance ---------------------------!
+!
+!
+variable modify  &
+   variable_name = .Project_last.cam_sys_1.cam_profile_name  &
+   object_value = .Project_last.Cam_profile_2
+!
+variable modify  &
+   variable_name = .Project_last.cam_sys_1.follower_name  &
+   object_value = .Project_last.follower_1_1
+!
+variable modify  &
+   variable_name = .Project_last.cam_sys_1.follower_motion_name  &
+   object_value = .Project_last.Follower_Motion_1
+!
+ude modify instance  &
+   instance_name = .Project_last.cam_sys_1
+!
+!-------------------------- Adams View UDE Instance ---------------------------!
+!
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.prof_name  &
+   string_value = ""
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_pro_sha  &
+   string_value = "disk"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_method  &
+   string_value = "create"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_no_points  &
+   real_value = 500.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_location  &
+   real_value =   &
+      600.0,  &
+      150.0,  &
+      0.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_orientation  &
+   real_value =   &
+      90.0,  &
+      0.0,  &
+      0.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_min_radius  &
+   real_value = 100.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_max_radius  &
+   real_value = (0.0mm)
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_thickness  &
+   real_value = 50.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_offset_along_cam_axis  &
+   real_value = (0.0mm)
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_groove_width  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_groove_Depth  &
+   real_value = 5.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.exte_file  &
+   string_value = ""
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.inde_vari  &
+   string_value = "angle"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_method  &
+   string_value = "create"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_motion_name  &
+   object_value = .Project_last.Follower_Motion_1
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_arrangement  &
+   string_value = "inline"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_joint_type  &
+   string_value = "translation"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_axis_offset  &
+   real_value = (0.0mm)
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_end_sha  &
+   string_value = "circle"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_end_ht  &
+   real_value = 25.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_piv_loc  &
+   real_value = ({0, 0, 0})
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_piv_x_offset  &
+   real_value = 400.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_piv_y_offset  &
+   real_value = 50.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_piv_z_offset  &
+   real_value = (0.0mm)
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.fol_end_flat_width  &
+   real_value = 50.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_mnt_i  &
+   object_value = .Project_last.Cam_profile_2.par_cam.mar_axis
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_mnt_j  &
+   object_value = .Project_last.ground.follower_1_1_cam_attach_j
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.joi_mar_cur_j  &
+   object_value = .Project_last.Cam_profile_2.par_cam.mar_pro_ref
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_bush_kx  &
+   real_value = 1.0E+05
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_bush_kz  &
+   real_value = 1.0E+05
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_bush_ktx  &
+   real_value = 1.0E+05
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_bush_ktz  &
+   real_value = 1.0E+05
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_bush_Damp  &
+   real_value = (1.0E-03 / UNITS_CONVERSION_FACTOR("sec"))
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_bush_stiff  &
+   real_value =   &
+      (.Project_last.Cam_profile_2.cam_bush_kx),  &
+      (.Project_last.Cam_profile_2.cam_bush_kx),  &
+      (.Project_last.Cam_profile_2.cam_bush_kz)
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_bush_tstiff  &
+   real_value =   &
+      (.Project_last.Cam_profile_2.cam_bush_ktx),  &
+      (.Project_last.Cam_profile_2.cam_bush_ktx),  &
+      (.Project_last.Cam_profile_2.cam_bush_ktz)
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_mnt_style  &
+   string_value = "none"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_mnt_joi_type  &
+   string_value = "revolute"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_mnt_part_type  &
+   string_value = "rigid"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_mnt_part  &
+   object_value = .Project_last.ground
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.con_j_geo  &
+   object_value = .Project_last.Cam_profile_2.par_cam.geo_shell
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.matrix_values  &
+   real_value =   &
+      -3.6605397191E-02,  &
+      2.6799116426E-05,  &
+      0.0,  &
+      3.4942020376,  &
+      -6.2569484437E-02,  &
+      0.0,  &
+      6.9867853742,  &
+      -0.243883163,  &
+      0.0,  &
+      10.5201418874,  &
+      -0.542653359,  &
+      0.0,  &
+      14.1198867205,  &
+      -0.9537843891,  &
+      0.0,  &
+      18.529143953,  &
+      -1.4493597195,  &
+      0.0,  &
+      22.9395360011,  &
+      -1.9363904353,  &
+      0.0,  &
+      28.9335863386,  &
+      -2.3740243046,  &
+      0.0,  &
+      34.3537631071,  &
+      -2.5673080102,  &
+      0.0,  &
+      40.0187328342,  &
+      -2.5281955586,  &
+      0.0,  &
+      46.2897926042,  &
+      -2.2745470961,  &
+      0.0,  &
+      51.8612757569,  &
+      -1.8788407789,  &
+      0.0,  &
+      57.6014877794,  &
+      -1.3342689356,  &
+      0.0,  &
+      63.5479638442,  &
+      -0.6600511998,  &
+      0.0,  &
+      69.609614243,  &
+      9.9388056936E-02,  &
+      0.0,  &
+      76.1384917516,  &
+      1.0034022213,  &
+      0.0,  &
+      82.3328182785,  &
+      1.8289392849,  &
+      0.0,  &
+      89.069914496,  &
+      2.6905656947,  &
+      0.0,  &
+      95.0251690601,  &
+      3.2404630001,  &
+      0.0,  &
+      101.5217723775,  &
+      3.6246264871,  &
+      0.0,  &
+      107.6777968911,  &
+      3.6903318206,  &
+      0.0,  &
+      113.5456826812,  &
+      3.3937583753,  &
+      0.0,  &
+      119.6115884051,  &
+      2.7228564845,  &
+      0.0,  &
+      124.5674925866,  &
+      1.7226352202,  &
+      0.0,  &
+      129.6956697537,  &
+      0.2419921833,  &
+      0.0,  &
+      134.2459486059,  &
+      -1.5554007866,  &
+      0.0,  &
+      138.7742147508,  &
+      -3.8284607995,  &
+      0.0,  &
+      142.952479918,  &
+      -6.4312675601,  &
+      0.0,  &
+      146.8305536252,  &
+      -9.3717486037,  &
+      0.0,  &
+      150.3585965281,  &
+      -12.6033069147,  &
+      0.0,  &
+      153.6246001982,  &
+      -16.1865353493,  &
+      0.0,  &
+      156.3819292569,  &
+      -19.8691032759,  &
+      0.0,  &
+      159.1032406768,  &
+      -24.197710373,  &
+      0.0,  &
+      161.3645790825,  &
+      -28.5813741069,  &
+      0.0,  &
+      163.787130317,  &
+      -34.0015168667,  &
+      0.0,  &
+      165.9259466747,  &
+      -39.5102565033,  &
+      0.0,  &
+      167.9547837559,  &
+      -45.391434711,  &
+      0.0,  &
+      169.7675403503,  &
+      -51.3180348325,  &
+      0.0,  &
+      171.3634731244,  &
+      -57.2739945526,  &
+      0.0,  &
+      172.7502583063,  &
+      -63.2807990668,  &
+      0.0,  &
+      173.9265051484,  &
+      -69.332064482,  &
+      0.0,  &
+      174.8908493353,  &
+      -75.4206940526,  &
+      0.0,  &
+      175.6421159622,  &
+      -81.5392697214,  &
+      0.0,  &
+      176.1793897263,  &
+      -87.6803369463,  &
+      0.0,  &
+      176.5020160424,  &
+      -93.836413783,  &
+      0.0,  &
+      176.60960184,  &
+      -100.0,  &
+      0.0,  &
+      176.5020160424,  &
+      -106.163586217,  &
+      0.0,  &
+      176.1793897263,  &
+      -112.3196630537,  &
+      0.0,  &
+      175.6421159622,  &
+      -118.4607302786,  &
+      0.0,  &
+      174.8908493353,  &
+      -124.5793059474,  &
+      0.0,  &
+      173.9265051484,  &
+      -130.667935518,  &
+      0.0,  &
+      172.7502583063,  &
+      -136.7192009332,  &
+      0.0,  &
+      171.3635418847,  &
+      -142.7257296582,  &
+      0.0,  &
+      169.7680453837,  &
+      -148.6802036631,  &
+      0.0,  &
+      167.9657126702,  &
+      -154.5753683384,  &
+      0.0,  &
+      165.958739609,  &
+      -160.404041334,  &
+      0.0,  &
+      163.7495713875,  &
+      -166.1591213098,  &
+      0.0,  &
+      161.340899537,  &
+      -171.8335965874,  &
+      0.0,  &
+      158.7356586531,  &
+      -177.4205536926,  &
+      0.0,  &
+      155.9370228204,  &
+      -182.9131857788,  &
+      0.0,  &
+      152.9484017457,  &
+      -188.30480092,  &
+      0.0,  &
+      149.7734366034,  &
+      -193.5888302636,  &
+      0.0,  &
+      146.4159955993,  &
+      -198.7588360337,  &
+      0.0,  &
+      142.8801692584,  &
+      -203.8085193748,  &
+      0.0,  &
+      139.1702654401,  &
+      -208.7317280255,  &
+      0.0,  &
+      135.290804091,  &
+      -213.5224638144,  &
+      0.0,  &
+      131.246511737,  &
+      -218.174889968,  &
+      0.0,  &
+      127.0423157255,  &
+      -222.6833382216,  &
+      0.0,  &
+      122.6833382216,  &
+      -227.0423157255,  &
+      0.0,  &
+      118.174889968,  &
+      -231.246511737,  &
+      0.0,  &
+      113.5224638144,  &
+      -235.290804091,  &
+      0.0,  &
+      108.7317280255,  &
+      -239.1702654401,  &
+      0.0,  &
+      103.8085193748,  &
+      -242.8801692584,  &
+      0.0,  &
+      98.7588360337,  &
+      -246.4159955993,  &
+      0.0,  &
+      93.5888302636,  &
+      -249.7734366034,  &
+      0.0,  &
+      88.30480092,  &
+      -252.9484017457,  &
+      0.0,  &
+      82.9131857788,  &
+      -255.9370228204,  &
+      0.0,  &
+      77.4205536926,  &
+      -258.7356586531,  &
+      0.0,  &
+      71.8335965874,  &
+      -261.340899537,  &
+      0.0,  &
+      66.1591213098,  &
+      -263.7495713875,  &
+      0.0,  &
+      60.404041334,  &
+      -265.958739609,  &
+      0.0,  &
+      54.5753683384,  &
+      -267.9657126702,  &
+      0.0,  &
+      48.6802036631,  &
+      -269.7680453837,  &
+      0.0,  &
+      42.7257296582,  &
+      -271.3635418847,  &
+      0.0,  &
+      36.7192009332,  &
+      -272.7502583063,  &
+      0.0,  &
+      30.667935518,  &
+      -273.9265051484,  &
+      0.0,  &
+      24.5793059474,  &
+      -274.8908493353,  &
+      0.0,  &
+      18.4607302786,  &
+      -275.6421159622,  &
+      0.0,  &
+      12.3196630537,  &
+      -276.1793897263,  &
+      0.0,  &
+      6.163586217,  &
+      -276.5020160424,  &
+      0.0,  &
+      0.0,  &
+      -276.60960184,  &
+      0.0,  &
+      -6.163586217,  &
+      -276.5020160424,  &
+      0.0,  &
+      -12.3196630537,  &
+      -276.1793897263,  &
+      0.0,  &
+      -18.4607302786,  &
+      -275.6421159622,  &
+      0.0,  &
+      -24.5793059474,  &
+      -274.8908493353,  &
+      0.0,  &
+      -30.667935518,  &
+      -273.9265051484,  &
+      0.0,  &
+      -36.7192009332,  &
+      -272.7502583063,  &
+      0.0,  &
+      -42.7257296582,  &
+      -271.3635418847,  &
+      0.0,  &
+      -48.6802036631,  &
+      -269.7680453837,  &
+      0.0,  &
+      -54.5753683384,  &
+      -267.9657126702,  &
+      0.0,  &
+      -60.404041334,  &
+      -265.958739609,  &
+      0.0,  &
+      -66.1260455911,  &
+      -263.7562455162,  &
+      0.0,  &
+      -71.7675763174,  &
+      -261.3482909249,  &
+      0.0,  &
+      -77.1512967524,  &
+      -258.7858027104,  &
+      0.0,  &
+      -82.4951599416,  &
+      -255.9757607068,  &
+      0.0,  &
+      -87.5255384269,  &
+      -253.0297803029,  &
+      0.0,  &
+      -92.5050823793,  &
+      -249.8110570084,  &
+      0.0,  &
+      -97.1388995893,  &
+      -246.4754974453,  &
+      0.0,  &
+      -101.6633800361,  &
+      -242.8698818201,  &
+      0.0,  &
+      -105.891795585,  &
+      -239.1197257889,  &
+      0.0,  &
+      -109.9706164838,  &
+      -235.1111665952,  &
+      0.0,  &
+      -113.7949497922,  &
+      -230.9370662265,  &
+      0.0,  &
+      -117.3974828541,  &
+      -226.5687421043,  &
+      0.0,  &
+      -120.7485314395,  &
+      -222.0412708016,  &
+      0.0,  &
+      -123.8424191047,  &
+      -217.3648407835,  &
+      0.0,  &
+      -126.6722056709,  &
+      -212.5527575373,  &
+      0.0,  &
+      -129.2279221271,  &
+      -207.6244721365,  &
+      0.0,  &
+      -131.5048376577,  &
+      -202.5933890677,  &
+      0.0,  &
+      -133.496056411,  &
+      -197.4789328464,  &
+      0.0,  &
+      -135.1981163036,  &
+      -192.2962304779,  &
+      0.0,  &
+      -136.6062217768,  &
+      -187.0662098937,  &
+      0.0,  &
+      -137.7241986337,  &
+      -181.790315432,  &
+      0.0,  &
+      -138.5355661405,  &
+      -176.5381703527,  &
+      0.0,  &
+      -139.0672027904,  &
+      -171.2135025929,  &
+      0.0,  &
+      -139.2986068125,  &
+      -165.9704411746,  &
+      0.0,  &
+      -139.2657609872,  &
+      -160.5786229847,  &
+      0.0,  &
+      -138.9609440249,  &
+      -155.3492251525,  &
+      0.0,  &
+      -138.3999646313,  &
+      -149.9769543741,  &
+      0.0,  &
+      -137.6102834937,  &
+      -144.8367762516,  &
+      0.0,  &
+      -136.5736435345,  &
+      -139.5464087188,  &
+      0.0,  &
+      -135.354949573,  &
+      -134.4576213707,  &
+      0.0,  &
+      -133.9485345977,  &
+      -129.4914755844,  &
+      0.0,  &
+      -132.3348374007,  &
+      -124.4725750083,  &
+      0.0,  &
+      -130.6023935941,  &
+      -119.6786124913,  &
+      0.0,  &
+      -128.6924057429,  &
+      -114.8519115075,  &
+      0.0,  &
+      -126.7102551947,  &
+      -110.2631653218,  &
+      0.0,  &
+      -124.5654599046,  &
+      -105.6146859987,  &
+      0.0,  &
+      -122.3902902291,  &
+      -101.1945879805,  &
+      0.0,  &
+      -120.0892026225,  &
+      -96.7390870723,  &
+      0.0,  &
+      -117.7858784086,  &
+      -92.4863299377,  &
+      0.0,  &
+      -115.4197302701,  &
+      -88.2918350932,  &
+      0.0,  &
+      -113.0503117631,  &
+      -84.2595033854,  &
+      0.0,  &
+      -110.6402740227,  &
+      -80.3089354021,  &
+      0.0,  &
+      -108.2133860449,  &
+      -76.472537445,  &
+      0.0,  &
+      -105.7551152338,  &
+      -72.7151842723,  &
+      0.0,  &
+      -103.2848166836,  &
+      -69.0618611045,  &
+      0.0,  &
+      -100.7827621661,  &
+      -65.4727630313,  &
+      0.0,  &
+      -98.2712279411,  &
+      -61.9768682062,  &
+      0.0,  &
+      -95.7286268264,  &
+      -58.5354935207,  &
+      0.0,  &
+      -93.1745023837,  &
+      -55.1726643003,  &
+      0.0,  &
+      -90.5954148428,  &
+      -51.8657468155,  &
+      0.0,  &
+      -87.9869573243,  &
+      -48.6033829716,  &
+      0.0,  &
+      -85.3777668228,  &
+      -45.4242108232,  &
+      0.0,  &
+      -82.699881788,  &
+      -42.2322662967,  &
+      0.0,  &
+      -80.1042932995,  &
+      -39.2319068041,  &
+      0.0,  &
+      -77.4186253461,  &
+      -36.2136140589,  &
+      0.0,  &
+      -74.8727901098,  &
+      -33.4758487877,  &
+      0.0,  &
+      -72.1718622451,  &
+      -30.6836814265,  &
+      0.0,  &
+      -69.6098100406,  &
+      -28.1793212693,  &
+      0.0,  &
+      -66.8935775243,  &
+      -25.6605460674,  &
+      0.0,  &
+      -64.287890339,  &
+      -23.4032124328,  &
+      0.0,  &
+      -61.55373182,  &
+      -21.1892181179,  &
+      0.0,  &
+      -58.7785252292,  &
+      -19.0983005625,  &
+      0.0,  &
+      -55.9192903471,  &
+      -17.0962427445,  &
+      0.0,  &
+      -52.9919264233,  &
+      -15.1951903844,  &
+      0.0,  &
+      -50.0,  &
+      -13.3974596216,  &
+      0.0,  &
+      -46.9471562786,  &
+      -11.7052407141,  &
+      0.0,  &
+      -43.8371146789,  &
+      -10.1205953701,  &
+      0.0,  &
+      -40.6736643076,  &
+      -8.6454542357,  &
+      0.0,  &
+      -37.4606593416,  &
+      -7.2816145433,  &
+      0.0,  &
+      -34.2020143326,  &
+      -6.0307379214,  &
+      0.0,  &
+      -30.9016994375,  &
+      -4.8943483705,  &
+      0.0,  &
+      -27.5637355817,  &
+      -3.8738304062,  &
+      0.0,  &
+      -24.19218956,  &
+      -2.9704273724,  &
+      0.0,  &
+      -20.7911690818,  &
+      -2.1852399266,  &
+      0.0,  &
+      -17.3648177667,  &
+      -1.5192246988,  &
+      0.0,  &
+      -13.917310096,  &
+      -0.9731931258,  &
+      0.0,  &
+      -10.4528463268,  &
+      -0.5478104632,  &
+      0.0,  &
+      -6.9756473744,  &
+      -0.243594974,  &
+      0.0,  &
+      -3.4899496703,  &
+      -6.0917298091E-02,  &
+      0.0,  &
+      -3.6605397191E-02,  &
+      2.6799116426E-05,  &
+      0.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.dis_spl_x  &
+   real_value =   &
+      0.0,  &
+      3.636363636,  &
+      7.272727273,  &
+      10.90909091,  &
+      14.54545455,  &
+      18.18181818,  &
+      21.81818182,  &
+      25.45454545,  &
+      29.09090909,  &
+      32.72727273,  &
+      36.36363636,  &
+      40.0,  &
+      43.63636364,  &
+      47.27272727,  &
+      50.90909091,  &
+      54.54545455,  &
+      58.18181818,  &
+      61.81818182,  &
+      65.45454545,  &
+      69.09090909,  &
+      72.72727273,  &
+      76.36363636,  &
+      80.0,  &
+      83.63636364,  &
+      87.27272727,  &
+      90.90909091,  &
+      94.54545455,  &
+      98.18181818,  &
+      101.8181818,  &
+      105.4545455,  &
+      109.0909091,  &
+      112.7272727,  &
+      116.3636364,  &
+      120.0,  &
+      123.6363636,  &
+      127.2727273,  &
+      130.9090909,  &
+      134.5454545,  &
+      138.1818182,  &
+      141.8181818,  &
+      145.4545455,  &
+      149.0909091,  &
+      152.7272727,  &
+      156.3636364,  &
+      160.0,  &
+      163.6363636,  &
+      167.2727273,  &
+      170.9090909,  &
+      174.5454545,  &
+      178.1818182,  &
+      181.8181818,  &
+      185.4545455,  &
+      189.0909091,  &
+      192.7272727,  &
+      196.3636364,  &
+      200.0,  &
+      203.6363636,  &
+      207.2727273,  &
+      210.9090909,  &
+      214.5454545,  &
+      218.1818182,  &
+      221.8181818,  &
+      225.4545455,  &
+      229.0909091,  &
+      232.7272727,  &
+      236.3636364,  &
+      240.0,  &
+      243.6363636,  &
+      247.2727273,  &
+      250.9090909,  &
+      254.5454545,  &
+      258.1818182,  &
+      261.8181818,  &
+      265.4545455,  &
+      269.0909091,  &
+      272.7272727,  &
+      276.3636364,  &
+      280.0,  &
+      283.6363636,  &
+      287.2727273,  &
+      290.9090909,  &
+      294.5454545,  &
+      298.1818182,  &
+      301.8181818,  &
+      305.4545455,  &
+      309.0909091,  &
+      312.7272727,  &
+      316.3636364,  &
+      320.0,  &
+      323.6363636,  &
+      327.2727273,  &
+      330.9090909,  &
+      334.5454545,  &
+      338.1818182,  &
+      341.8181818,  &
+      345.4545455,  &
+      349.0909091,  &
+      352.7272727,  &
+      356.3636364,  &
+      360.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.dis_spl_y  &
+   real_value =   &
+      0.0,  &
+      0.0,  &
+      2.3232196E-02,  &
+      0.374094267,  &
+      1.568509819,  &
+      3.918615707,  &
+      7.480024254,  &
+      12.30730706,  &
+      18.45037599,  &
+      25.91216932,  &
+      34.28330959,  &
+      42.99087391,  &
+      51.40078545,  &
+      58.87627606,  &
+      65.03709853,  &
+      69.85937138,  &
+      73.33894435,  &
+      75.4860768,  &
+      76.41652198,  &
+      76.60709731,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.60960184,  &
+      76.59304953,  &
+      76.48295901,  &
+      76.18598919,  &
+      75.60847805,  &
+      74.66777356,  &
+      73.33903144,  &
+      71.62010421,  &
+      69.50880295,  &
+      67.00341015,  &
+      64.10321528,  &
+      60.80863272,  &
+      57.12251689,  &
+      53.0553581,  &
+      48.67051111,  &
+      44.07095798,  &
+      39.36114311,  &
+      34.64384845,  &
+      30.01845142,  &
+      25.57958808,  &
+      21.41639282,  &
+      17.61090771,  &
+      14.20559207,  &
+      11.19458667,  &
+      8.567409267,  &
+      6.314311123,  &
+      4.426465376,  &
+      2.896346542,  &
+      1.717373369,  &
+      0.884541465,  &
+      0.374125563,  &
+      0.111971486,  &
+      1.4634969E-02,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0,  &
+      0.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.angular_offset  &
+   real_value = (0.0d)
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.row_cnt  &
+   integer_value = 181
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_inertia_chk  &
+   string_value = "off"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_mass_option  &
+   string_value = "mass"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_mass  &
+   real_value = 1.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_Ixx  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_Iyy  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_Izz  &
+   real_value = 10.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_Ixy  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_Izx  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_Iyz  &
+   real_value = 0.0
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_density  &
+   real_value = 7.8E-06
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.cam_material  &
+   string_value = ".materials.steel"
+!
+variable modify  &
+   variable_name = .Project_last.Cam_profile_2.ref_marker  &
+   object_value = .Project_last.ground.Cam_profile_2_ref_marker
+!
+ude modify instance  &
+   instance_name = .Project_last.Cam_profile_2
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+marker create  &
+   marker_name = .Project_last.Cam_profile_2.par_cam.MARKER_85  &
+   adams_id = 85  &
+   location = 600.0, 150.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+undo end_block
+!
+!--------------------------- UDE Dependent Objects ----------------------------!
+!
+!
+constraint create joint spherical  &
+   joint_name = .Project_last.JOINT_22  &
+   adams_id = 22  &
+   i_marker_name = .Project_last.follower_1_1.par_fol_arm.MARKER_106  &
+   j_marker_name = .Project_last.coupler.MARKER_107
+!
+constraint attributes  &
+   constraint_name = .Project_last.JOINT_22  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Project_last.JOINT_14  &
+   adams_id = 14  &
+   i_marker_name = .Project_last.Cam_profile_2.par_cam.MARKER_85  &
+   j_marker_name = .Project_last.ground.MARKER_86
+!
+constraint attributes  &
+   constraint_name = .Project_last.JOINT_14  &
+   name_visibility = off
+!
+constraint create joint cylindrical  &
+   joint_name = .Project_last.JOINT_18  &
+   adams_id = 18  &
+   i_marker_name = .Project_last.follower_1_1.par_fol_arm.MARKER_93  &
+   j_marker_name = .Project_last.ground.MARKER_94
+!
+constraint attributes  &
+   constraint_name = .Project_last.JOINT_18  &
+   name_visibility = off
+!
+!---------------------------------- Motions -----------------------------------!
+!
+!
+constraint create motion_generator  &
+   motion_name = .Project_last.MOTION_1  &
+   adams_id = 1  &
+   type_of_freedom = rotational  &
+   joint_name = .Project_last.JOINT_14  &
+   function = ""
+!
+constraint attributes  &
+   constraint_name = .Project_last.MOTION_1  &
+   name_visibility = off
+!
+!---------------------------------- Accgrav -----------------------------------!
+!
+!
+force create body gravitational  &
+   gravity_field_name = gravity  &
+   x_component_gravity = 0.0  &
+   y_component_gravity = -9806.65  &
+   z_component_gravity = 0.0
+!
+!----------------------------- Analysis settings ------------------------------!
+!
+!
+!---------------------------------- Measures ----------------------------------!
+!
+!
+measure create object  &
+   measure_name = .Project_last.Fx_crank  &
+   from_first = yes  &
+   object = .Project_last.JOINT_20  &
+   characteristic = element_force  &
+   component = x_component  &
+   create_measure_display = no
+!
+data_element attributes  &
+   data_element_name = .Project_last.Fx_crank  &
+   color = WHITE
+!
+measure create object  &
+   measure_name = .Project_last.Angular_disp_crank  &
+   from_first = yes  &
+   object = .Project_last.JOINT_20  &
+   characteristic = ax_ay_az_projection_angles  &
+   component = z_component  &
+   create_measure_display = no
+!
+data_element attributes  &
+   data_element_name = .Project_last.Angular_disp_crank  &
+   color = WHITE
+!
+measure create object  &
+   measure_name = .Project_last.Fy_crank  &
+   from_first = yes  &
+   object = .Project_last.JOINT_20  &
+   characteristic = element_force  &
+   component = y_component  &
+   create_measure_display = no
+!
+data_element attributes  &
+   data_element_name = .Project_last.Fy_crank  &
+   color = WHITE
+!
+measure create point  &
+   measure_name = .Project_last.Omega_z_crank_cm  &
+   point = .Project_last.crank.cm  &
+   characteristic = angular_acceleration  &
+   component = z_component  &
+   create_measure_display = no
+!
+data_element attributes  &
+   data_element_name = .Project_last.Omega_z_crank_cm  &
+   color = WHITE
+!
+!---------------------------- Adams View Variables ----------------------------!
+!
+!
+variable create  &
+   variable_name = .Project_last.wizard_state  &
+   integer_value = 1
+!
+!---------------------------- Function definitions ----------------------------!
+!
+!
+constraint modify motion_generator  &
+   motion_name = .Project_last.MOTION_1  &
+   function = "360.0d * time"
+!
+!-------------------------- Adams View UDE Instance ---------------------------!
+!
+!
+ude modify instance  &
+   instance_name = .Project_last.Follower_Motion_1
+!
+!-------------------------- Adams View UDE Instance ---------------------------!
+!
+!
+ude modify instance  &
+   instance_name = .Project_last.follower_1_1
+!
+!-------------------------- Adams View UDE Instance ---------------------------!
+!
+!
+ude modify instance  &
+   instance_name = .Project_last.cam_sys_1
+!
+!-------------------------- Adams View UDE Instance ---------------------------!
+!
+!
+ude modify instance  &
+   instance_name = .Project_last.Cam_profile_2
+!
+!--------------------------- Expression definitions ---------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = ground
+!
+marker modify  &
+   marker_name = .Project_last.ground.mar_follower_1_1_cont  &
+   location =   &
+      (LOC_RELATIVE_TO({.Project_last.follower_1_1.fol_axis_offset, .Project_last.follower_1_1.cam_disk_min_rad, 0.0mm}, .Project_last.ground.Cam_profile_2_ref_marker))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({.Project_last.follower_1_1.fol_tilt_angle, 0.0d, 0.0d}, .Project_last.ground.Cam_profile_2_ref_marker))
+!
+marker modify  &
+   marker_name = .Project_last.ground.follower_1_1_spring_attach_j  &
+   location =   &
+      (LOC_RELATIVE_TO({.Project_last.follower_1_1.fol_axis_offset * 0.0, .Project_last.follower_1_1.fol_ref_mar_y_dis + .Project_last.follower_1_1.radial_offset * 0.0 + .Project_last.follower_1_1.fol_end_ht + .Project_last.follower_1_1.fol_arm_len, -.Project_last.follower_1_1.fol_offset_along_cam_axis - .Project_last.follower_1_1.axial_offset}, .Project_last.follower_1_1.fol_ref_mar))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({0.0d, 0.0d, 0.0d}, .Project_last.follower_1_1.fol_ref_mar))
+!
+marker modify  &
+   marker_name = .Project_last.ground.follower_1_1_fol_attach_j  &
+   location =   &
+      (LOC_RELATIVE_TO({.Project_last.follower_1_1.fol_axis_offset * 0.0, .Project_last.follower_1_1.fol_arm_len / 2 + .Project_last.follower_1_1.fol_end_ht + .Project_last.follower_1_1.fol_ref_mar_y_dis + .Project_last.follower_1_1.radial_offset * 0.0, -.Project_last.follower_1_1.fol_offset_along_cam_axis - .Project_last.follower_1_1.axial_offset}, .Project_last.follower_1_1.fol_ref_mar))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({0.0d, -90.0d, 0.0d}, .Project_last.follower_1_1.fol_ref_mar))
+!
+marker modify  &
+   marker_name = .Project_last.ground.follower_1_1_cam_attach_j  &
+   location =   &
+      (LOC_RELATIVE_TO({0.0, 0.0, 0.0}, .Project_last.Cam_profile_2.cam_mnt_i))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({0.0d, 0.0d, 0.0d}, .Project_last.Cam_profile_2.cam_mnt_i))
+!
+marker modify  &
+   marker_name = .Project_last.crank.MARKER_2  &
+   location =   &
+      (LOC_RELATIVE_TO({101.54, 0.0, 0.0}, .Project_last.crank.MARKER_1))  &
+   relative_to = .Project_last.crank
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+geometry modify shape link  &
+   link_name = .Project_last.crank.LINK_1  &
+   width = (4.0cm)  &
+   depth = (2.0cm)
+!
+marker modify  &
+   marker_name = .Project_last.coupler.MARKER_3  &
+   location =   &
+      (LOC_RELATIVE_TO({101.54, 0.0, 0.0}, .Project_last.crank.MARKER_1))  &
+   relative_to = .Project_last.coupler
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+marker modify  &
+   marker_name = .Project_last.coupler.MARKER_4  &
+   location =   &
+      (LOC_RELATIVE_TO({193, 0.0, 0.0}, .Project_last.coupler.MARKER_3))  &
+   relative_to = .Project_last.coupler
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Project_last.ground
+!
+geometry modify shape link  &
+   link_name = .Project_last.coupler.LINK_2  &
+   width = (4.0cm)  &
+   depth = (2.0cm)
+!
+geometry modify shape ellipsoid  &
+   ellipsoid_name = .Project_last.PART_5.ELLIPSOID_17  &
+   x_scale_factor = (2 * 4)  &
+   y_scale_factor = (2 * 4)  &
+   z_scale_factor = (2 * 4)
+!
+ude modify instance  &
+   instance_name = .Project_last.Cam_profile_2  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Project_last.Cam_profile_2.ref_marker))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({0, 0, 0}, .Project_last.Cam_profile_2.ref_marker))
+!
+material modify  &
+   material_name = .Project_last.steel  &
+   density = (7801.0(kg/meter**3))  &
+   youngs_modulus = (2.07E+11(Newton/meter**2))
+!
+model display  &
+   model_name = Project_last
