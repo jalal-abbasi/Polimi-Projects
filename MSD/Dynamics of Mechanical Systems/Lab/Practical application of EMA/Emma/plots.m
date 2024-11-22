@@ -1,1 +1,0 @@
-plot(freq,abs(frf(:,3)));
